@@ -5,8 +5,6 @@ def euclidean_distances(X, Y):
     and Y (shape NxK). The output of this function is a matrix of shape MxN containing
     the Euclidean distance between two rows.
 
-    (Hint: You're free to implement this with numpy.linalg.norm)
-
     Arguments:
         X {np.ndarray} -- First matrix, containing M examples with K features each.
         Y {np.ndarray} -- Second matrix, containing N examples with K features each.
@@ -21,7 +19,6 @@ def euclidean_distances(X, Y):
         for col in range(n):
             d[row, col] = np.linalg.norm(X[row] - Y[col])
     return d
-    raise NotImplementedError()
 
 
 def manhattan_distances(X, Y):
@@ -29,7 +26,6 @@ def manhattan_distances(X, Y):
     and Y (shape NxK). The output of this function is a matrix of shape MxN containing
     the Manhattan distance between two rows.
 
-    (Hint: You're free to implement this with numpy.linalg.norm)
 
     Arguments:
         X {np.ndarray} -- First matrix, containing M examples with K features each.
@@ -45,5 +41,5 @@ def manhattan_distances(X, Y):
         for col in range(n):
             d[row, col] = np.linalg.norm(X[row] - Y[col], ord=1)
     return d
-    raise NotImplementedError()
+
 

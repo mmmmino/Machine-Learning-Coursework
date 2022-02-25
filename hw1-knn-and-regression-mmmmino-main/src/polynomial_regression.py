@@ -18,22 +18,10 @@ class PolynomialRegression():
 
             ax^2 + bx + c
 
-        Your code will be tested by comparing it with implementations inside sklearn.
-        DO NOT USE THESE IMPLEMENTATIONS DIRECTLY IN YOUR CODE. You may find the
-        following documentation useful:
-
         https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html
         https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
-
-        Here are helpful slides:
-
         http://interactiveaudiolab.github.io/teaching/eecs349stuff/eecs349_linear_regression.pdf
 
-        The internal representation of this class is up to you. Read each function
-        documentation carefully to make sure the input and output matches so you can
-        pass the test cases. However, do not use the functions numpy.polyfit or numpy.polval.
-        You should implement the closed form solution of least squares as detailed in slide 10
-        of the lecture slides linked above.
 
         Usage:
             import numpy as np
@@ -93,18 +81,4 @@ class PolynomialRegression():
 
         return self.transformed_features.T.dot(self.coefs)
 
-    def visualize(self, features, targets):
-        """
-        This function should produce a single plot containing a scatter plot of the
-        features and the targets, and the polynomial fit by the model should be
-        graphed on top of the points.
-
-        DO NOT USE plt.show() IN THIS FUNCTION. Instead, use plt.savefig().
-
-        Args:
-            features (np.ndarray): 1D array containing real-valued inputs.
-            targets (np.ndarray): 1D array containing real-valued targets.
-        Returns:
-            None (plots to the active figure)
-        """
 
