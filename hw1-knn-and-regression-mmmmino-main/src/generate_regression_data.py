@@ -29,15 +29,17 @@ def generate_regression_data(degree, N, amount_of_noise=1.0):
                         polynomial of degree 'degree'.
 
     """
-    x = np.random.uniform(-1, 1, size=(N,))
+    x = np.random.uniform(-1, 1, size=(N,))  # Generates explanatory variable x
     coff = np.random.uniform(low=-10, high=10, size=degree)
     p = np.poly1d(coff)
+    # Generates response variable y
     y = np.zeros((N,))
     for i in range(len(y)):
         y[i] = p(x[i])
     mean = 0
     std = amount_of_noise * np.std(y)
     noise = np.random.normal(mean, std, size=(N,))
+    # Adds Gaussian noise n to y
     y += noise
     return x, y
-    raise NotImplementedError()
+

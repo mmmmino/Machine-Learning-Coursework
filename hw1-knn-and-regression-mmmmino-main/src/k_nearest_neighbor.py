@@ -124,14 +124,13 @@ class KNearestNeighbor():
         # self.targets  shape: (n_train, n_dimensions)
         # features      shape: (n_test, n_features)
         if self.distance_measure == 'manhattan':
-            distances = manhattan_distances(features, features)# scores shape: (n_test, n_train)
+            distances = manhattan_distances(features, features)  # scores shape: (n_test, n_train)
         else:
-            distances = euclidean_distances(features, features)# scores shape: (n_test, n_train)
+            distances = euclidean_distances(features, features)  # scores shape: (n_test, n_train)
         labels = np.zeros(self.targets.shape)
         label = np.zeros(self.targets.shape)
         neighbors = np.argsort(distances)
         n_dimensions = self.targets.shape[1]
-        
 
         if ignore_first:
             neighbors = neighbors[:, 1:(self.n_neighbors + 1)]

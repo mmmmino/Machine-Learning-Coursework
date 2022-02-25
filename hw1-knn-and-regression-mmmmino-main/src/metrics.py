@@ -22,4 +22,3 @@ def mean_squared_error(estimates, targets):
     squared_array = np.square(np.subtract(estimates, targets))
     mse = squared_array.mean()
     return mse
-    # raise NotImplementedError()
