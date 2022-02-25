@@ -27,7 +27,6 @@ class NaiveBayes:
     def predict(self, X):
         """
         Return the most probable label for each row x of X.
-        You should not need to edit this function.
         """
         probs = self.predict_proba(X)
         # print(np.argmax(probs, axis=1))
@@ -240,8 +239,8 @@ class NaiveBayesEM(NaiveBayes):
         X = X.toarray()
         # unlabelled_y_index = np.where(np.isnan(y) == True)
         # labelled_y_index = np.where(np.isnan(y) == False)
-        delta = np.ones([n_docs, 2])  # 针对全数据集
-        q_y = 0.5  # 根据标签计算分母
+        delta = np.ones([n_docs, 2])  # For the full data set
+        q_y = 0.5  # Calculate the denominator based on the label
         # q_y_0 = 1 - q_y_1
         # p_y = np.sum(y == 1) / (np.sum(y==0)+np.sum(y==1))
         q_x_y = np.ones([vocab_size, n_labels]) / (2 * vocab_size)
@@ -249,9 +248,9 @@ class NaiveBayesEM(NaiveBayes):
         for j in range(self.max_iter):
             for i in range(n_docs):  # choose the unlabelled data
                 numerator_0, numerator_1 = 1, 1
-                for k in range(vocab_size):  # 连乘
+                for k in range(vocab_size):
                     if X[i, k] != 0:
-                        numerator_0 = numerator_0 * q_x_y[k, 0] * X[i][k]  # 计算delta的分子
+                        numerator_0 = numerator_0 * q_x_y[k, 0] * X[i][k]  # calculate the numerator of delta
                         numerator_1 = numerator_1 * q_x_y[k, 1] * X[i][k]
                 denominator = numerator_0 * (1 - q_y) + numerator_1 * q_y
                 delta[i, 0] = numerator_0 / denominator
@@ -263,10 +262,10 @@ class NaiveBayesEM(NaiveBayes):
                 kilt_0, Melita_0, kilt_1, Melita_1 = 0, 0, 0, 0
                 for i in range(n_docs):
                     if X[i, j] != 0:
-                        kilt_0 += X[i][k] * delta[i, 0]  # 分子_0
-                        Melita_0 += np.sum(X[i]) * delta[i, 0]  # 分母_0
-                        kilt_1 += X[i][k] * delta[i, 1]  # 分子_1
-                        Melita_1 += np.sum(X[i]) * delta[i, 1]  # 分母_1
+                        kilt_0 += X[i][k] * delta[i, 0]  # numerator_0
+                        Melita_0 += np.sum(X[i]) * delta[i, 0]  # denominator_0
+                        kilt_1 += X[i][k] * delta[i, 1]  # numerator_1
+                        Melita_1 += np.sum(X[i]) * delta[i, 1]  # denominator_1
 
                 q_x_y[k, 0] = (kilt_0 + self.smoothing) / (Melita_0 + vocab_size * self.smoothing)
                 q_x_y[k, 1] = (kilt_1 + self.smoothing) / (Melita_1 + vocab_size * self.smoothing)

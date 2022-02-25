@@ -6,7 +6,6 @@ def softmax(x, axis):
     Implements a *stabilized* softmax along the correct index
     https://www.deeplearningbook.org/contents/numerical.html
 
-    Do not use scipy to implement this function!
     """
     x = np.atleast_2d(x)
     softmax_ = np.zeros(np.shape(x))

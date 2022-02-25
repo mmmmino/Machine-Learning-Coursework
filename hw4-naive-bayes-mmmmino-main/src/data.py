@@ -11,7 +11,6 @@ def build_dataset(datadir, num_docs=0, max_words=None, vocab_size=None):
     Build a document-word matrix from State of the Union speeches, taken from
     https://en.m.wikisource.org/wiki/Portal:State_of_the_Union_Speeches_by_United_States_Presidents
 
-    You should not need to modify this function!
 
     The dataset is returned as `scipy.sparse.csr_matrix`, which is a more efficient
     way of representing a feature matrix when most entries are zero.
@@ -127,7 +126,6 @@ def train_test_unlabeled_split(data, labels, speeches, splits):
     """
     Split the data and labels into train and test splits using the
         provided splits dictionary.
-        You should not need to modify this function!
 
     Args:
         data: a (sparse) matrix of `[num_documents, vocab_size]`
