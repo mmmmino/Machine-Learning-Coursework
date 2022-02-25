@@ -50,15 +50,14 @@ def load_data(data_path):
     features = []
     targets = []
     csv_reader = csv.reader(open(data_path))
-    attribute_names = next(csv_reader)  # 读取第一行每一列的标题
+    attribute_names = next(csv_reader)  # Reads the header of each column in the first row
     attribute_names = attribute_names[0:-1]
-    for row in csv_reader:  # 将csv 文件中的数据保存到birth_data中
+    for row in csv_reader:  # Save the data in the CSV file to the birth_data file
         features.append(row[0:-1])
         targets.append(row[-1])
     features = np.array(features, dtype=np.float64)
     targets = np.array(targets, dtype=np.float64)
     return features, targets, attribute_names
-    # Implement this function and remove the line that raises the error after.
 
 
 def train_test_split(features, targets, fraction):
@@ -94,7 +93,7 @@ def train_test_split(features, targets, fraction):
         N = int(features.shape[0] * fraction)
         if N+begin_ind >= features.shape[0]:
             train_feature = np.concatenate((features[0:(N+begin_ind)-features.shape[0]], features[begin_ind:]))
-            train_target = np.append(targets[0:(N+begin_ind)-features.shape[0]] ,targets[begin_ind:])
+            train_target = np.append(targets[0:(N+begin_ind)-features.shape[0]], targets[begin_ind:])
             test_feature = features[((N+begin_ind)-features.shape[0]):begin_ind]
             test_target = targets[((N+begin_ind)-features.shape[0]):begin_ind]
         else:
@@ -103,7 +102,7 @@ def train_test_split(features, targets, fraction):
             test_feature = np.concatenate((features[0:begin_ind], features[begin_ind+N:]))
             test_target = np.append(targets[0:begin_ind] ,targets[begin_ind+N:])
         return train_feature, train_target, test_feature, test_target
-    # raise NotImplementedError()
+
 
 
 if __name__ == "__main__":

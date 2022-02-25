@@ -5,6 +5,7 @@ from .metrics import compute_precision_and_recall, compute_confusion_matrix
 from .metrics import compute_f1_measure, compute_accuracy
 from .data import load_data, train_test_split
 
+
 def run(data_path, learner_type, fraction):
     """
     This function walks through an entire machine learning workflow as follows:
@@ -23,12 +24,6 @@ def run(data_path, learner_type, fraction):
     robust across multiple runs, as long as `fraction` is sufficiently high. See how
     unstable your learner gets when less and less data is used for training by
     playing around with `fraction`.
-
-    IMPORTANT:
-    If fraction == 1.0, then your training and testing sets should be exactly the
-    same. This is so that the test cases are deterministic. The test case checks if you
-    are fitting the training data correctly, rather than checking for generalization to
-    a testing set.
 
     Args:
         data_path (str): path to csv file containing the data
@@ -58,7 +53,6 @@ def run(data_path, learner_type, fraction):
     confusion_matrix = compute_confusion_matrix(test_targets, predictions)
     accuracy = compute_accuracy(test_targets, predictions)
     f1_measure = compute_f1_measure(test_targets, predictions)
-    # raise NotImplementedError()
 
     # Order of these returns must be maintained
     return confusion_matrix, accuracy, precision, recall, f1_measure

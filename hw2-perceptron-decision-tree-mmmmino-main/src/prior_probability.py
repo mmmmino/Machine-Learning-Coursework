@@ -29,7 +29,6 @@ class PriorProbability():
             self.most_common_class = 1
         else:
             self.most_common_class = 0
-        # raise NotImplementedError()
 
     def predict(self, features):
         """
@@ -48,4 +47,3 @@ class PriorProbability():
         else:
             predictions = np.ones(features.shape[0])
         return predictions
-        # raise NotImplementedError()

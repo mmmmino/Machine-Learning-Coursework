@@ -28,7 +28,6 @@ def transform_data(features):
     transformed_features[:, 0] = temp
     transformed_features[:, 1] = temp
     return transformed_features
-    # raise NotImplementedError()
 
 
 class Perceptron():
@@ -51,7 +50,7 @@ class Perceptron():
         self.max_iterations = max_iterations
         self.weights = None
 
-        # raise NotImplementedError()
+
 
     def fit(self, features, targets):
         """
@@ -97,7 +96,6 @@ class Perceptron():
             if (self.weights == weight).all():
                 break
         return i
-        # raise NotImplementedError()
 
     def predict(self, features):
         """
@@ -114,7 +112,6 @@ class Perceptron():
         Returns:
             predictions (np.ndarray): Output of saved model on features.
         """
-        # raise NotImplementedError()
         predictions = np.zeros(features.shape[0])
         for i in range(features.shape[0]):
             feature = features[i]
@@ -123,6 +120,5 @@ class Perceptron():
                 predictions[i] = 1.0
             else:
                 predictions[i] = 0.0
-        # Don't forget to relabel predictions back to (0, 1) from (-1, 1)
 
         return predictions

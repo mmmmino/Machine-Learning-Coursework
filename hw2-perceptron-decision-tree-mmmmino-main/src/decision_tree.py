@@ -43,7 +43,6 @@ def _visualize_helper(tree, level):
 class DecisionTree():
     def __init__(self, attribute_names):
         """
-        TODO: Implement this class.
 
         This class implements a binary decision tree learner for examples with
         categorical attributes. Use the ID3 algorithm for implementing the Decision
@@ -97,7 +96,6 @@ class DecisionTree():
         max_gain = -1
         best_index = None
         for index in range(np.shape(features)[1]):
-        # for index in range(len(self.attribute_names)):
             true_features, true_targets, false_features, false_targets = self.partition(features, targets, index)
             if true_targets.shape[0] == 0 or false_targets.shape[0] == 0:
                 continue
@@ -134,7 +132,7 @@ class DecisionTree():
         for index in range(np.shape(features)[1]):
             self.median.append(np.median(features[:, index]))
         self.tree = self.build_tree(features, targets)
-        # raise NotImplementedError()
+
 
     def dfs_predict(self, feature, node, features):
         if len(node.branches) == 0:
@@ -159,7 +157,7 @@ class DecisionTree():
             predictions[i] = self.dfs_predict(features[i], self.tree, features)
 
         return predictions
-        # raise NotImplementedError()
+
 
     def visualize(self, branch=None, level=0):
         if not branch:
@@ -199,7 +197,7 @@ def information_gain(features, attribute_index, targets):
     H_a0 = -(p_1_in_a0 * log2(p_1_in_a0) + p_0_in_a0 * log2(p_0_in_a0))
 
     return H - (p_for_a1 * H_a1 + p_for_a0 * H_a0)
-    # raise NotImplementedError()
+
 
 
 if __name__ == '__main__':

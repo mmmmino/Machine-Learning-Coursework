@@ -13,9 +13,6 @@ def compute_confusion_matrix(actual, predictions):
         [true_negatives, false_positives],
         [false_negatives, true_positives]
     ]
-
-    YOU DO NOT NEED TO IMPLEMENT CONFUSION MATRICES THAT ARE FOR MORE THAN TWO 
-    CLASSES (binary).
     
     Compute and return the confusion matrix.
 
@@ -41,7 +38,6 @@ def compute_confusion_matrix(actual, predictions):
         else:
             confusion_matrix[0, 0] += 1
     return confusion_matrix
-    # raise NotImplementedError()
 
 
 def compute_accuracy(actual, predictions):
@@ -63,7 +59,6 @@ def compute_accuracy(actual, predictions):
     confusion_matrix = compute_confusion_matrix(actual, predictions)
     accuracy = (confusion_matrix[1, 1] + confusion_matrix[0, 0]) / actual.shape[0]
     return accuracy
-    # raise NotImplementedError()
 
 
 def compute_precision_and_recall(actual, predictions):
@@ -92,7 +87,6 @@ def compute_precision_and_recall(actual, predictions):
     precision = confusion_matrix[1, 1] / (confusion_matrix[1, 1] + confusion_matrix[0, 1])
     recall = confusion_matrix[1, 1] / (confusion_matrix[1, 1] + confusion_matrix[1, 0])
     return precision, recall
-    # raise NotImplementedError()
 
 
 def compute_f1_measure(actual, predictions):
@@ -121,4 +115,3 @@ def compute_f1_measure(actual, predictions):
     precision, recall = compute_precision_and_recall(actual, predictions)
     f1_measure = 2 * precision * recall / (precision + recall)
     return f1_measure
-    # raise NotImplementedError()
